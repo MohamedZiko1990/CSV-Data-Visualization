@@ -1,54 +1,54 @@
 import React from "react";
 
-const AxesForm = props => {
-  const list = props.headers.map(head => {
-    console.log(head);
-    return (
-      <a className="dropdown-item" href="#" key={head}>
-        {head}
-      </a>
-    );
-  });
+class AxesForm extends React.Component {
+  state = { xAxis: "", yAxis: "" };
 
-  return (
-    <div>
-      <form>
-        <div className="form-group">
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-            >
-              Choose "X AXIS"
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  onFormSubmit = (event, x, y) => {
+    event.preventDefault();
+  };
+  onChangeXAxis = event => {
+    this.setState({ xAxis: event.target.value });
+  };
+
+  onChangeYAxis = event => {
+    this.setState({ yAxis: event.target.value });
+  };
+
+  render() {
+    const list = this.props.headers.map(head => {
+      console.log(head);
+      return (
+        <option value={head} href="#" key={head}>
+          {head}
+        </option>
+      );
+    });
+    return (
+      <div>
+        <form
+          onSubmit={event =>
+            this.onFormSubmit(event, this.state.xAxis, this.state.yAxis)
+          }
+        >
+          <div className="form-group">
+            <select onChange={this.onChangeXAxis} value={this.state.xAxis}>
+              <option value="">Choose X-Axis</option>
               {list}
-            </div>
+            </select>
           </div>
-        </div>
-        <div className="form-group">
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-            >
-              Choose "Y AXIS"
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div className="form-group">
+            <select onChange={this.onChangeYAxis} value={this.state.yAxis}>
+              <option value="">Choose Y-Axis</option>
               {list}
-            </div>
+            </select>
           </div>
-        </div>
-        <button type="submit" className="btn btn-secondary">
-          Submit
-        </button>
-      </form>
-    </div>
-  );
-};
+          <button type="submit" className="btn btn-secondary">
+            Submit
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
 
 export default AxesForm;
