@@ -5,6 +5,7 @@ class AxesForm extends React.Component {
 
   onFormSubmit = (event, x, y) => {
     event.preventDefault();
+    this.props.onApply(x, y);
   };
   onChangeXAxis = event => {
     this.setState({ xAxis: event.target.value });
@@ -43,7 +44,7 @@ class AxesForm extends React.Component {
             </select>
           </div>
           <button type="submit" className="btn btn-secondary">
-            Submit
+            Apply
           </button>
         </form>
       </div>
