@@ -2,22 +2,34 @@ import React from "react";
 import { convertCSVToArray } from "convert-csv-to-array";
 import TextForm from "./TextForm";
 import AxesForm from "./AxesForm";
+import Chart from "./Chart";
 
 class App extends React.Component {
-  state = { objArray: null, headers: [] };
+  state = {
+    objArray: {},
+    headers: [],
+    xAxis: [],
+    yAxis: []
+  };
 
   onDataSubmit = data => {
     const arrayofObjects = convertCSVToArray(data, {
       separator: ","
     });
     console.log(arrayofObjects);
-    console.log(arrayofObjects[0]);
     this.setState({ objArray: arrayofObjects, headers: arrayofObjects[0] });
   };
 
   onAxesSelected = (x, y) => {
-    console.log("there is" + x);
-    console.log("there is" + y);
+    var arrayX = [];
+    var arrayY = [];
+    for (var i = 1; i < this.state.objArray.length; i++) {
+      arrayX.push(this.state.objArray[i][x]);
+    }
+    for (var i = 1; i < this.state.objArray.length; i++) {
+      arrayY.push(this.state.objArray[i][y]);
+    }
+    this.setState({ xAxis: arrayX, yAxis: arrayY });
   };
 
   render() {
@@ -33,6 +45,14 @@ class App extends React.Component {
               onApply={this.onAxesSelected}
             />
           </div>
+        </div>
+        <div className="row">
+          <Chart
+            xName={this.state.xName}
+            yName={this.state.Name}
+            xAxisArray={this.state.xAxis}
+            yAxisArray={this.state.yAxis}
+          />
         </div>
       </div>
     );
