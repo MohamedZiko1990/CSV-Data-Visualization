@@ -8,8 +8,6 @@ class App extends React.Component {
   state = {
     objArray: {},
     headers: [],
-    xName: "",
-    yName: "",
     xAxis: [],
     yAxis: []
   };
@@ -26,12 +24,12 @@ class App extends React.Component {
     var arrayX = [];
     var arrayY = [];
     for (var i = 1; i < this.state.objArray.length; i++) {
-      arrayX.push(this.state.objArray[i].x);
+      arrayX.push(this.state.objArray[i][x]);
     }
     for (var i = 1; i < this.state.objArray.length; i++) {
-      arrayY.push(this.state.objArray[i].y);
+      arrayY.push(this.state.objArray[i][y]);
     }
-    this.setState({ xName: x, yName: y, xAxis: arrayX, yAxis: arrayY });
+    this.setState({ xAxis: arrayX, yAxis: arrayY });
   };
 
   render() {
