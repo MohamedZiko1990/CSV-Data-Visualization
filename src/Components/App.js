@@ -15,6 +15,11 @@ class App extends React.Component {
     this.setState({ objArray: arrayofObjects, headers: arrayofObjects[0] });
   };
 
+  onAxesSelected = (x, y) => {
+    console.log("there is" + x);
+    console.log("there is" + y);
+  };
+
   render() {
     return (
       <div>
@@ -23,7 +28,10 @@ class App extends React.Component {
             <TextForm onSubmitCSV={this.onDataSubmit} />
           </div>
           <div className="col-6">
-            <AxesForm headers={this.state.headers} />
+            <AxesForm
+              headers={this.state.headers}
+              onApply={this.onAxesSelected}
+            />
           </div>
         </div>
       </div>
