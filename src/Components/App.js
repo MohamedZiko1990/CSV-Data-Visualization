@@ -9,7 +9,8 @@ class App extends React.Component {
     objArray: {},
     headers: [],
     xAxis: [],
-    yAxis: []
+    yAxis: [],
+    chart: false
   };
 
   onDataSubmit = data => {
@@ -17,7 +18,17 @@ class App extends React.Component {
       separator: ","
     });
     console.log(arrayofObjects);
-    this.setState({ objArray: arrayofObjects, headers: arrayofObjects[0] });
+    if (this.state.chart) {
+      this.setState({
+        xAxis: [],
+        yAxis: [],
+        chart: false,
+        objArray: arrayofObjects,
+        headers: arrayofObjects[0]
+      });
+    } else {
+      this.setState({ objArray: arrayofObjects, headers: arrayofObjects[0] });
+    }
   };
 
   onAxesSelected = (x, y) => {
@@ -29,7 +40,7 @@ class App extends React.Component {
     for (var i = 1; i < this.state.objArray.length; i++) {
       arrayY.push(this.state.objArray[i][y]);
     }
-    this.setState({ xAxis: arrayX, yAxis: arrayY });
+    this.setState({ xAxis: arrayX, yAxis: arrayY, chart: true });
   };
 
   render() {
