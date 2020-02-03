@@ -30,7 +30,9 @@ class TextForm extends React.Component {
               ></textarea>
             </label>
           </div>
-          <button type="submit">Process</button>
+          <button type="submit" class="btn btn-secondary">
+            Process
+          </button>
         </form>
       </div>
     );
