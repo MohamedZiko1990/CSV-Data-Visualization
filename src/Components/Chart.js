@@ -14,6 +14,10 @@ class Chart extends React.Component {
     this.setState({ mode: "bar" });
   };
 
+  onClickColumn = () => {
+    this.setState({ mode: "column" });
+  };
+
   render() {
     const config = {
       chart: {
@@ -44,6 +48,9 @@ class Chart extends React.Component {
           </button>
           <button class="btn btn-success ml-2" onClick={this.onClickSpline}>
             Spline
+          </button>
+          <button class="btn btn-success ml-2" onClick={this.onClickColumn}>
+            Column
           </button>
         </div>
       </div>
