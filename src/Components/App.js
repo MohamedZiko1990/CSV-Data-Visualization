@@ -1,13 +1,17 @@
 import React from "react";
-import { convertCSVToArray } from "convert-csv-to-array";
+import Nav from "./Nav";
 import TextForm from "./TextForm";
 import AxesForm from "./AxesForm";
 import Chart from "./Chart";
+import "./App.css";
+import { convertCSVToArray } from "convert-csv-to-array";
 
 class App extends React.Component {
   state = {
     objArray: {},
     headers: [],
+    xName: "",
+    yName: "",
     xAxis: [],
     yAxis: [],
     chart: false
@@ -40,30 +44,45 @@ class App extends React.Component {
     for (var i = 1; i < this.state.objArray.length; i++) {
       arrayY.push(this.state.objArray[i][y]);
     }
-    this.setState({ xAxis: arrayX, yAxis: arrayY, chart: true });
+    this.setState({
+      xAxis: arrayX,
+      yAxis: arrayY,
+      chart: true,
+      xName: x,
+      yName: y
+    });
   };
 
   render() {
     return (
-      <div>
-        <div className="row">
-          <div className="col-6">
-            <TextForm onSubmitCSV={this.onDataSubmit} />
-          </div>
-          <div className="col-6">
-            <AxesForm
-              headers={this.state.headers}
-              onApply={this.onAxesSelected}
-            />
-          </div>
+      <div class="h-100 d-flex flex-column">
+        <div className="row ">
+          <header className="col-12 p-0">
+            <Nav />
+          </header>
         </div>
-        <div className="row">
-          <Chart
-            xName={this.state.xName}
-            yName={this.state.Name}
-            xAxisArray={this.state.xAxis}
-            yAxisArray={this.state.yAxis}
-          />
+        <div className="row justify-content-between flex-grow-1">
+          <aside className="col-4">
+            <div>
+              <TextForm onSubmitCSV={this.onDataSubmit} />
+            </div>
+            <div>
+              <AxesForm
+                headers={this.state.headers}
+                onApply={this.onAxesSelected}
+              />
+            </div>
+          </aside>
+          <article className="col-8 pr-5">
+            <div>
+              <Chart
+                xName={this.state.xName}
+                yName={this.state.yName}
+                xAxisArray={this.state.xAxis}
+                yAxisArray={this.state.yAxis}
+              />
+            </div>
+          </article>
         </div>
       </div>
     );

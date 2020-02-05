@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./TextForm.css";
 class TextForm extends React.Component {
   state = { data: null };
   onFormSubmit = (event, data) => {
@@ -20,19 +20,22 @@ class TextForm extends React.Component {
           onSubmit={event => this.onFormSubmit(event, this.state.data)}
         >
           <div className="form-group shadow-textarea">
-            <label>
-              Place your CSV Data:
+            <label className="text-center">
+              <h4 className="text-white">Place your CSV Data:</h4>
               <textarea
                 className="form-control"
-                rows="3"
-                placeholder="Place your data..."
+                rows="5"
+                cols="50"
+                placeholder="Place your CSV data..."
                 onChange={this.onChangeData}
               ></textarea>
             </label>
           </div>
-          <button type="submit" class="btn btn-secondary">
-            Process
-          </button>
+          <div class="text-center">
+            <button id="process" type="submit" class="btn btn-success">
+              Process
+            </button>
+          </div>
         </form>
       </div>
     );
