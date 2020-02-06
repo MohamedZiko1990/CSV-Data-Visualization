@@ -1,68 +1,59 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Line-Graph Task
 
-In the project directory, you can run:
+The goal of this task was to create a CSv data converter, which display any given CSV data into graphs using `highcharts` and `highcharts-react` in 3 different ways as the user can choose between `spline` , `bar` and `column`.
 
-### `npm start`
+### Overview
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+When you load the web-page for the first time, you will find the page consits of 3 main parts distributed into 2 columns.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The firts part is the CSV data form, which will recieve the users data in the text area. after the user hits the `process` button, the headers which are avaliable in the data will be updated automatically in the drop-down boxes for the Axes.
 
-### `npm test`
+The second part is the Axes form, the 2 drop-down boxes represents the `x-Axis` and `y-Axis`. after you click apply the data fetched for this 2 headers will construct the graph.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+the final part is the `highchart` which presents the data according to the selected axes. As a user you will have 3 different buttons to choose the display type of your graph, and the graph shows the displayed Axes names and the series name.
 
-### `npm run build`
+#### Steps
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Load the page using `npm start` in the cmd in the location of the project (you can do that from the search bar OR from directory navigation bar)
+- when the page load, you will see a CSV data form with a `process` button, place any sample of CSV data in the available text-area and press the button.
+- when the `process` button is clicked, check the Axes drop-menu boxes for the header names which is updated automatically.
+- Select the `x-Axis` and the `y-Axis` from the drop-menu boxes and press `apply`.
+- the results will show up on the graph area by default as `spline`.
+- use the 3 buttons below the graph to navigate between different display types of your data
+  `spline`, `bar` and `column`.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### Frame Works/ libraries/ tools
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- ReactJs
+- highcharts
+- highcharts-react
+- convert-csv-to-array
+- Bootstrap 4
+- Git
+- Postman
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Introduction
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Entities
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+##### Navbar
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+contains the company logo and the head of the project
 
-## Learn More
+##### CSV Form
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+contains the text-area where the user can copy-past his CSV data and press `process` button.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### Axes Form
 
-### Code Splitting
+contains 2 drop-menu boxes, which presents the 2 Axes in your graph. Lists will be updated automatically when the CSV form is submitted. The user will choose the `x-Axis` and the `y-Axis` and press `apply` button.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+##### Chart
 
-### Analyzing the Bundle Size
+The place which will presnets the user CSV data into graphs, contains 3 buttons to navigate between modes of displaying users data `spline`, `bar` and `column`.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+---
