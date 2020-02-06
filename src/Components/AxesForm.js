@@ -37,7 +37,7 @@ class AxesForm extends React.Component {
               <label>
                 <h5 className="text-white">Choose X-Axis</h5>
                 <select onChange={this.onChangeXAxis} value={this.state.xAxis}>
-                  <option value="">----------------</option>
+                  <option value="">---</option>
                   {list}
                 </select>
               </label>
@@ -46,7 +46,7 @@ class AxesForm extends React.Component {
               <label>
                 <h5 className="text-white">Choose y-Axis</h5>
                 <select onChange={this.onChangeYAxis} value={this.state.yAxis}>
-                  <option value="">----------------</option>
+                  <option value="">---</option>
                   {list}
                 </select>
               </label>
