@@ -62,7 +62,7 @@ class App extends React.Component {
           </header>
         </div>
         <div className="row justify-content-between flex-grow-1">
-          <aside className="col-4">
+          <aside className="col-sm-12 col-md-4">
             <div>
               <TextForm onSubmitCSV={this.onDataSubmit} />
             </div>
@@ -73,7 +73,7 @@ class App extends React.Component {
               />
             </div>
           </aside>
-          <article className="col-8 pr-5">
+          <article className="col-sm-12 col-md-8 pr-3">
             <div>
               <Chart
                 xName={this.state.xName}
